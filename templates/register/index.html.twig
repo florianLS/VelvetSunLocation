@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}VelvetSun Location - Inscription - Connexion{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="container-login">
+            <section class="register">
+                <h2>Pas encore inscrit ?</h2>
+                <p>Créez votre compte rapidement</p>
+                {{form(form)}}
+            </section>
+            <section class="login">
+            <h2> Vous avez déjà un compte ?</h2>
+            <p>Connectez-vous</p>
+            </section>
+        </div>
+    </div>
+{% endblock %}

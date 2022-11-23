@@ -7,6 +7,16 @@ body {
     background-repeat: no-repeat;
     min-height: 100vh;
     color: rgb(238, 227, 227);
+    font-family: sans-serif;
+}
+
+h2 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 header {
@@ -24,4 +34,62 @@ header {
 .container {
     width: 90%;
     margin: 0 auto;
+}
+
+.container-home-login {
+    margin-right: 50px;
+}
+
+.container-login {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.container-login .register,
+.container-login .login {
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.container-login .register {
+    border-right: 1px solid rgb(225, 217, 217);
+}
+
+form {
+    width: 100%;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+}
+
+form button[type="submit"] {
+    outline: none;
+    background-color: #00cdac;
+    color: #fff;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+form input {
+    padding: 6px 10px;
+    background-color: rgb(238, 227, 227);
+    border: 1px solid #fff;
+    margin-bottom: 15px;
+    height: 40px;
+}
+
+form button[type="submit"]:hover {
+    background-color: #fff;
+    color: #00cdac;
 }
