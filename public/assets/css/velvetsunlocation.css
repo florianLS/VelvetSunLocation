@@ -3,4 +3,25 @@
 }
 body {
     position: relative;
+    background: linear-gradient(to right, #02aab0, #00cdac);
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: rgb(238, 227, 227);
+}
+
+header {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-login img {
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
 }
