@@ -9,10 +9,33 @@
                 <h2>Pas encore inscrit ?</h2>
                 <p>Créez votre compte rapidement</p>
                 {{form(form)}}
+                {% if notification %}
+                <p class="notification">{{ notification }}</p>
+                {% endif %}
             </section>
             <section class="login">
-            <h2> Vous avez déjà un compte ?</h2>
-            <p>Connectez-vous</p>
+                <h2> Vous avez déjà un compte ?</h2>
+                <p>Connectez-vous</p>
+                <form method="post" action="{{ path('login') }}">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                    {% if app.user %}
+                        <div class="mb-3">
+                            Vous êtes connecté en tant que {{ app.user.userIdentifier }}, <a href="{{ path('logout') }}">Déconnexion</a>
+                        </div>
+                    {% endif %}
+
+                    <label for="inputEmail">Email</label>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                    <label for="inputPassword">Mot de passe</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+                    <input type="hidden" name="_csrf_token"value="{{ csrf_token('authenticate') }}">
+
+                    <button class="btn btn-lg btn-primary" type="submit">Connexion</button>
+                </form>
             </section>
         </div>
     </div>
