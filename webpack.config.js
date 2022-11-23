@@ -14,8 +14,8 @@ Encore
     // only needed for CDN's or subdirectory deploy
     //.setManifestKeyPrefix('build/')
     
-    //.addEntry('main', './assets/main.ts')
-    //.enableTypeScriptLoader()
+    .addEntry('main', './public/assets/main.ts')
+    .enableTypeScriptLoader()
 
     /*
      * ENTRY CONFIG
