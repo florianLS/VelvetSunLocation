@@ -10,9 +10,11 @@
     </head>
     <body>
         <header>
-            <h1>VelvetSunLocation</h1>
-            <div class="container-login">
-                <img src="{{ asset('assets/img/profile-user.png') }}" alt="Icône d'un membre - login">
+            <h1><a href="{{ path('home') }}">VelvetSunLocation</a></h1>
+            <div class="container-home-login">
+                <a href="{{ path('register') }}">
+                    <img src="{{ asset('assets/img/profile-user.png') }}" alt="Icône d'un membre - login">
+                </a>
             </div>
         </header>
         <main role="main" id="main">
