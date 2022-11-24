@@ -5,6 +5,19 @@
 {% block body %}
     <div class="container">
         <h2>Location de matériel de tournage</h2>
+        <h3 class="subtitle">Les produits vedette en ce moment</h3>
+        <div class="container-favorite-product">
+            {% for product in favoriteProducts %}
+                <div class="card-product">
+                    <p><a href="{{ path('product', {'id': product.id}) }}"><b>{{product.name}}</b></a></p>
+                    {# <p>{{product.description|replace({'[br]': '<br/>'})|raw}}</p> #}
+                    <div class="img-product">
+                        <img src="/uploads/{{ product.photo }}" alt="Photo du produit en vedette">
+                    </div>
+                    <p class="price-product">{{ (product.price / 100)|number_format(2, ',', '.')}} €</p>
+                </div>
+            {% endfor %}
+        </div>
     </div>
     {{ encore_entry_script_tags('main')}}
 {% endblock %}
