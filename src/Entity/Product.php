@@ -30,6 +30,9 @@ class Product
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $favorite = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -98,5 +101,17 @@ class Product
     public function __toString(): string
     {
         return $this->name;
+    }
+
+    public function isFavorite(): ?bool
+    {
+        return $this->favorite;
+    }
+
+    public function setFavorite(?bool $favorite): self
+    {
+        $this->favorite = $favorite;
+
+        return $this;
     }
 }
