@@ -1,9 +1,11 @@
+@import './variables';
+
 * {
     box-sizing: border-box;
 }
 body {
     position: relative;
-    background: linear-gradient(to right, #02aab0, #00cdac);
+    background: $backBlue;
     background-repeat: no-repeat;
     min-height: 100vh;
     color: rgb(238, 227, 227);
@@ -38,6 +40,15 @@ header {
 
 .container-home-login {
     margin-right: 50px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    a {
+        margin-left: 20px;
+    }
+    .container-home-cart {
+        cursor: pointer;
+    }
 }
 
 .container-login {
@@ -108,6 +119,21 @@ form button[type="submit"]:hover {
     color: #00cdac;
 }
 
+#container-cart {
+    position: relative;
+    #cart-count {
+        position: absolute;
+        top: -30px;
+        left: 20px;
+        padding: 5px;
+        background: $backgroundOrange;
+        border-radius: 50%;
+        width: 30px;
+        height: 28px;
+        text-align: center;
+    }
+}
+
 .notification {
     font-weight: bold;
 }
@@ -116,6 +142,7 @@ form button[type="submit"]:hover {
     text-align: center;
     margin-top: 40px;
 }
+
 .container-favorite-product {
     margin: 0 auto;
     width: 100%;
@@ -134,7 +161,7 @@ form button[type="submit"]:hover {
         margin: 0 30px;
         padding: 10px 14px;
         height: 210px;
-        background: linear-gradient(62deg, rgb(251, 171, 126) 0%, rgb(247, 206, 104) 100%);
+        background: $backgroundOrange;
         background-repeat: no-repeat;
         border: 2px solid #fff;
         border-radius: 10px;
@@ -159,4 +186,107 @@ form button[type="submit"]:hover {
     .card-product a:hover {
         color: #fff;
     }
+
+}
+
+.product-page {
+
+    .subtitle {
+        margin-bottom: 40px;
+    }
+    .container-info-product {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .left-content {
+        width: 30%;
+        .img-product {
+            width: 250px;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+    .right-content {
+        width: 70%;
+    }
+
+    .price-product {
+        background: $backgroundOrange;
+        border-radius: 6px;
+        width: 180px;
+        padding: 7px 10px;
+        text-align: center;
+    }
+
+    .stock-product {
+        background-color: #5cb85c;
+        color: #fff;
+        border-radius: 6px;
+        width: 180px;
+        padding: 7px 10px;
+        text-align: center;
+    }
+    .cart-product {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        .addon-minus, .addon-plus {
+            padding: 0;
+            width: 40px;
+            height: 50px;
+            line-height: 50px;
+            background: #ebebeb;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            border-radius: 0;
+            z-index: 10;
+            color: rgba(17,17,17,0.75);
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width: 20px;
+                height: 20px;
+            }
+        }
+        #quantity-product {
+            display: inline-block;
+            height: 50px;
+            width: 60px;
+            border: none;
+            margin: 0 3px;
+            text-align: center;
+        }
+        .cart-target {
+            margin-left: 30px;
+            button#add-to-cart {
+                background: $backgroundOrange;
+                background-repeat: no-repeat;
+                color: #252525;
+                letter-spacing: normal;
+                text-transform: uppercase;
+                font-size: 25px;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                padding: 8px 12px;
+                transition: all 0.1s ease-in-out;
+                &:hover {
+                    color: #fff;
+                }
+                img {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+    }
+
 }
