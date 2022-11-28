@@ -12,6 +12,15 @@
         <header>
             <h1><a href="{{ path('home') }}">VelvetSunLocation</a></h1>
             <div class="container-home-login">
+                <div class="container-home-cart">
+                    <a href="{{ path('cart') }}" id="container-cart">
+                        {% if cart is defined %}
+                            {# {{dump(cart.id)}} #}
+                            <span id="cart-count">{{cart}}</span>
+                        {% endif %}
+                        <img src="{{ asset('assets/img/shopping-cart.png') }}" alt="Icône d'un panier">
+                    </a>
+                </div>
                 <a href="{{ path('register') }}">
                     <img src="{{ asset('assets/img/profile-user.png') }}" alt="Icône d'un membre - login">
                 </a>
@@ -21,7 +30,7 @@
             {% block body %}
             {% endblock %}
         </main>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
     </body>
 </html>
