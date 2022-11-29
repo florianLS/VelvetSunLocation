@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 
+use App\Classe\Cart;
 use App\Entity\Product;
 use App\Entity\StockProduct;
 use Doctrine\ORM\EntityManagerInterface;
@@ -20,15 +21,18 @@ class ProductController extends AbstractController
     }
 
     #[Route('/produit/{id}', name: 'product')]
-    public function index($id): Response
+    public function index($id, Cart $cart): Response
     {
         $product = $this->em->getRepository(Product::class)->findOneById($id);
         $stockProduct = $this->em->getRepository(StockProduct::class)->findOneByProduct($id);
         $stock = $stockProduct->getStockNumber();
 
+        $totalProductsQuantity = $cart->getCurrentFullQuantity();
+
         return $this->render('product/index.html.twig', [
             'product' => $product,
-            'stock' => $stock
+            'stock' => $stock,
+            'cart' => $totalProductsQuantity
         ]);
     }
 }

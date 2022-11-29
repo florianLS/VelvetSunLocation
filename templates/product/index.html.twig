@@ -16,6 +16,7 @@
                 <p class="stock-product">{{stock}} produit(s) en stock</p>
                 <p class="price-product">{{ (product.price / 100)|number_format(2, ',', '.')}} € TTC</p>
                 <div class="cart-product">
+                    <p class="decale-right-little">Quantité: </p>
                     <span class="addon-minus">
                         <img src="{{ asset('assets/img/minus.png') }}" alt="Signe moins">
                     </span>
@@ -30,6 +31,9 @@
                             <span>Ajouter au panier</span>
                         </button>
                     </div>
+                </div>
+                <div class="get-cart">
+                    <p><a href="{{ path('cart') }}" class="go-cart">Accéder au panier</a></p>
                 </div>
             </div>
         </div>

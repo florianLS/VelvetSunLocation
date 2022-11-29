@@ -22,11 +22,7 @@ class HomeController extends AbstractController
     public function index(Cart $cart): Response
     {
         $favoriteProducts = $this->em->getRepository(Product::class)->findByFavorite(true);
-        $currentCart = $cart->getCurrentFullQuantity();
-        $totalProductsQuantity = 0;
-        foreach ($currentCart as $id => $quantity) {
-            $totalProductsQuantity += $quantity;
-        }
+        $totalProductsQuantity = $cart->getCurrentFullQuantity();
 
         return $this->render('home/index.html.twig', [
             'favoriteProducts' => $favoriteProducts,

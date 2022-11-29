@@ -3,9 +3,43 @@
 {% block title %}VelvetSunLocation | Panier{% endblock %}
 
 {% block body %}
-    <h1>Votre panier</h1>
-    <hr>
-    <div class="container cart">
+    <div class="container cart-page">
+        <h2>Votre panier</h2>
+        <hr>
+        <div class="container cart">
+            {% set total = null %}
+            {% for product in fullCart %}
+                <div class="one-product-cart">
+                    <div class="photo-product">
+                        <img src="/uploads/{{ product.product.photo }}" alt="Photo du produit - {{product.product.name}}">
+                    </div>
+                    <div class="content-product">
+                        <h3>{{product.product.name}}</h3>
+                        <p>{{product.product.description|replace({'[br]': '<br/>'})|raw}}</p>
+                        <div class="cart-product">
+                            <p class="cart-quantity">Quantité: </p>
+                            <span class="addon-minus">
+                                <img src="{{ asset('assets/img/minus.png') }}" alt="Signe moins">
+                            </span>
+                            <input type="text" id="quantity-product" value="{{product.quantity}}">
+                            <input type="hidden" id="product-id" value="{{product.product.id}}">
+                            <input type="hidden" id="add-to-cart" data-path="{{ path('add_to_cart', {'id': product.product.id}) }}">
+                            <span class="addon-plus">
+                                <img src="{{ asset('assets/img/add.png') }}" alt="Signe moins">
+                            </span>
+                            <p><a class="delete" href="{{ path('delete_product_to_cart', {'id': product.product.id}) }}">| Supprimer</a></p>
+                        </div>
+                    </div>
+                    <div class="price-product">
+                        <p class="total-price-product"><b>{{ (product.product.price / 100)|number_format(2, ',', '.')}} €</b></p>
+                    </div>
+                </div>
+                {% set total = total + (product.product.price * product.quantity)  %}
+            {% endfor %}
+            <div class="sub-total">
+                <p>Sous-total ({{cart}} articles): <b><span>{{ (total / 100)|number_format(2, ',', '.') }} €</span></b></p>
+            </div>
+        </div>
     </div>
 
 {% endblock %}
