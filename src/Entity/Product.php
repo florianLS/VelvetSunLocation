@@ -2,9 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\ProductRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ProductRepository;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
@@ -113,5 +113,10 @@ class Product
         $this->favorite = $favorite;
 
         return $this;
+    }
+
+    public function getStockNumber($id)
+    {
+        // return $stock;
     }
 }
