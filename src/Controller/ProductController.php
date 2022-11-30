@@ -6,7 +6,6 @@ namespace App\Controller;
 use App\Classe\Cart;
 use App\Classe\Search;
 use App\Entity\Product;
-use App\Entity\StockProduct;
 use App\Form\SearchProductsType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,9 +31,6 @@ class ProductController extends AbstractController
         $search = new Search();
         $form = $this->createForm(SearchProductsType::class, $search);
 
-        $stock = new StockProduct();
-        dd($stock->getProduct());
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $products = $this->em->getRepository(Product::class)->findWithSearch($search);
@@ -52,14 +48,10 @@ class ProductController extends AbstractController
     {
         $product = $this->em->getRepository(Product::class)->findOneById($id);
         if ($product) {
-            $stockProduct = $this->em->getRepository(StockProduct::class)->findOneByProduct($id);
-            $stock = $stockProduct->getStockNumber();
-
             $totalProductsQuantity = $cart->getCurrentFullQuantity();
 
             return $this->render('product/product.html.twig', [
                 'product' => $product,
-                'stock' => $stock,
                 'cart' => $totalProductsQuantity
             ]);
         } else {

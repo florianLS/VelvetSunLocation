@@ -29,7 +29,8 @@ class ProductCrudController extends AbstractCrudController
                 ->setUploadDir('public/uploads')->setUploadedFileNamePattern('[randomhash].[extension]')
                 ->setRequired(false),
             AssociationField::new('category'),
-            BooleanField::new('favorite')
+            BooleanField::new('favorite'),
+            IntegerField::new('stock')
         ];
     }
 }
