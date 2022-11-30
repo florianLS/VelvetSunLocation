@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block body %}
+    <div class="container product-page">
+        <h2 class="subtitle">{{product.name}}</h2>
+        <div class="container-info-product">
+            <div class="left-content">
+                <div class="img-product">
+                    <img src="/uploads/{{ product.photo }}" alt="Photo du produit - {{product.name}}">
+                </div>
+            </div>
+            <div class="right-content">
+                <p>{{product.description|replace({'[br]': '<br/>'})|raw}}</p>
+                <p class="stock-product">{{stock}} produit(s) en stock</p>
+                <p class="price-product">{{ (product.price / 100)|number_format(2, ',', '.')}} € TTC</p>
+                <div class="cart-product">
+                    <p class="decale-right-little">Quantité: </p>
+                    <span class="addon-minus">
+                        <img src="{{ asset('assets/img/minus.png') }}" alt="Signe moins">
+                    </span>
+                    <input type="text" id="quantity-product" value="1">
+                    <input type="hidden" id="product-id" value="{{product.id}}">
+                    <span class="addon-plus">
+                        <img src="{{ asset('assets/img/add.png') }}" alt="Signe moins">
+                    </span>
+                    <div class="cart-target">
+                        <button type="submit" name="submit" id="add-to-cart" data-path="{{ path('add_to_cart', {'id': product.id}) }}">
+                            <img src="{{ asset('assets/img/shopping-cart.png') }}" alt="Image représantant un panier">
+                            <span>Ajouter au panier</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="get-cart">
+                    <p><a href="{{ path('cart') }}" class="go-cart">Accéder au panier</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

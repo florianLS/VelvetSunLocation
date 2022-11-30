@@ -11,11 +11,17 @@
     <body>
         <header>
             <h1><a href="{{ path('home') }}">VelvetSunLocation</a></h1>
+            <div id="header-nav">
+                <nav>
+                    <ul>
+                        <li><a href="{{ path('products')}}">Nos produits</a></li>
+                    </ul>
+                </nav>
+            </div>
             <div class="container-home-login">
                 <div class="container-home-cart">
                     <a href="{{ path('cart') }}" id="container-cart">
                         {% if cart is defined %}
-                            {# {{dump(cart.id)}} #}
                             <span id="cart-count">{{cart}}</span>
                         {% endif %}
                         <img src="{{ asset('assets/img/shopping-cart.png') }}" alt="Icône d'un panier">
