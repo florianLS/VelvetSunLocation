@@ -43,6 +43,14 @@ header {
   color: rgb(185, 75, 75);
 }
 
+.warning {
+  background-color: rgb(206, 68, 68);
+}
+
+.success {
+  background-color: #5cb85c;
+}
+
 .decale-right-little {
   margin-right: 20px;
 }
@@ -246,7 +254,6 @@ form button[type=submit]:hover {
   text-align: center;
 }
 .product-page .stock-product {
-  background-color: #5cb85c;
   color: #fff;
   border-radius: 6px;
   width: 180px;

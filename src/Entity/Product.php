@@ -33,6 +33,9 @@ class Product
     #[ORM\Column(nullable: true)]
     private ?bool $favorite = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $stock = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -115,8 +118,15 @@ class Product
         return $this;
     }
 
-    public function getStockNumber($id)
+    public function getStock(): ?int
     {
-        // return $stock;
+        return $this->stock;
+    }
+
+    public function setStock(?int $stock): self
+    {
+        $this->stock = $stock;
+
+        return $this;
     }
 }

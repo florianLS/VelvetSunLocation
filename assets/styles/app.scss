@@ -48,6 +48,14 @@ header {
     }
 }
 
+.warning  {
+    background-color: $warning;
+}
+
+.success {
+    background-color: $success;
+}
+
 .decale-right-little {
     margin-right: 20px;
 }
@@ -255,7 +263,6 @@ form button[type="submit"]:hover {
     }
 
     .stock-product {
-        background-color: #5cb85c;
         color: #fff;
         border-radius: 6px;
         width: 180px;

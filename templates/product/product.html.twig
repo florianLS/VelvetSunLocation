@@ -13,8 +13,12 @@
             </div>
             <div class="right-content">
                 <p>{{product.description|replace({'[br]': '<br/>'})|raw}}</p>
-                <p class="stock-product">{{stock}} produit(s) en stock</p>
-                <p class="price-product">{{ (product.price / 100)|number_format(2, ',', '.')}} € TTC</p>
+                {% if product.stock > 0 %}
+                    <p class="stock-product success">{{product.stock}} produit(s) en stock</p>
+                {% else %}
+                    <p class="stock-product warning">Rupture de stock</p>
+                {% endif %}
+                <p class="price-product">{{ (product.price / 100)|number_format(2, ',', '.')}} € HT/Jour</p>
                 <div class="cart-product">
                     <p class="decale-right-little">Quantité: </p>
                     <span class="addon-minus">
