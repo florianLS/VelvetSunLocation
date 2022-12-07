@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Classe\Mail;
 use App\Entity\User;
 use App\Form\RegisterType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,7 +22,8 @@ class RegisterController extends AbstractController
         Request $request,
         EntityManagerInterface $em,
         UserPasswordHasherInterface  $passwordHasher,
-        AuthenticationUtils $authenticationUtils
+        AuthenticationUtils $authenticationUtils,
+        MailerInterface $mailer
     ): Response {
         $user = new User();
         $notification = null;
@@ -37,6 +40,9 @@ class RegisterController extends AbstractController
                 $em->persist($user);
                 $em->flush();
                 $notification = "Merci pour votre inscription, vous pouvez à présent vous connecter.";
+
+                // $mail = new Mail($mailer);
+                // $mail->send($user->getEmail());
             } else {
                 $notification = "L'email est déjà enregistrée !";
             }
